@@ -28,7 +28,7 @@ $(() => {
             );
             imageElement.setAttribute(
               "alt",
-              `Scan ${i}/${files.length}: ${Math.Round(buffer.length / 1024.0)}kB`
+              `Scan ${i}/${files.length}: ${Math.round(buffer.length / 1024.0)}kB`
             );
             const imageContainer = document.createElement("div");
             imageContainer.setAttribute(
