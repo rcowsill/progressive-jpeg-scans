@@ -11,6 +11,7 @@ $(() => {
             filename.startsWith("scan_")
           );
 
+          $("#scan-carousel .carousel-inner").empty();
           $(".carousel-total-slides").text(files.length);
 
           for (let i = 0; i < files.length; i++) {
@@ -27,7 +28,7 @@ $(() => {
               "data:image/jpeg;charset=utf-8;base64, " + str
             );
             imageElement.setAttribute(
-              "alt",
+              "title",
               `Scan ${i}/${files.length}: ${Math.round(buffer.length / 1024.0)}kB`
             );
             const imageContainer = document.createElement("div");
