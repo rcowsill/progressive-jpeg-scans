@@ -15,8 +15,8 @@ $(() => {
 
           for (let i = 0; i < files.length; i++) {
             const file = files[i];
-
-            const imageString = FS.readFile(file).reduce((data, byte) => {
+            const buffer = FS.readFile(file);
+            const imageString = buffer.reduce((data, byte) => {
               return data + String.fromCharCode(byte);
             }, "");
             const str = btoa(imageString);
@@ -26,7 +26,10 @@ $(() => {
               "src",
               "data:image/jpeg;charset=utf-8;base64, " + str
             );
-
+            imageElement.setAttribute(
+              "alt",
+              `Scan ${i}/${files.length}: ${Math.Round(buffer.length / 1024.0)}kB`
+            );
             const imageContainer = document.createElement("div");
             imageContainer.setAttribute(
               "class",
