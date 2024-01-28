@@ -52,6 +52,7 @@ $(() => {
 
           FS.unlink("image.jpg");
 
+          $("#scan-carousel").carousel(0);
           $("#scan-container").show();
         });
       }
