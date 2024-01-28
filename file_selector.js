@@ -31,9 +31,6 @@ $(() => {
               "title",
               `Scan ${i + 1}/${files.length}: ${Math.round(buffer.length / 1024.0)}kB`
             );
-            imageElement.dataset.index = i + 1;
-            imageElement.dataset.scanSize = buffer.length;
-            imageElement.dataset.totalSize = view.length;
             
             const imageContainer = document.createElement("div");
             imageContainer.setAttribute(
@@ -41,6 +38,10 @@ $(() => {
               "carousel-item" + (i === 0 ? " active" : "")
             );
             imageContainer.appendChild(imageElement);
+
+            imageContainer.dataset.index = i + 1;
+            imageContainer.dataset.scanSize = buffer.length;
+            imageContainer.dataset.totalSize = view.length;
 
             document
               .querySelector("#scan-carousel .carousel-inner")
