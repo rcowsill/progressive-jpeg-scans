@@ -42,6 +42,7 @@ $(() => {
             imageContainer.dataset.index = i + 1;
             imageContainer.dataset.scanSize = buffer.length;
             imageContainer.dataset.totalSize = view.length;
+            imageContainer.dataset.interval = 30 * buffer.length / view.length;
 
             document
               .querySelector("#scan-carousel .carousel-inner")
@@ -65,7 +66,7 @@ $(() => {
     $(".carousel-current-slide").text(itemData.index);
     const scanSizeKB = Math.round(itemData.scanSize / 1024.0);
     const totalSizeKB = Math.round(itemData.totalSize / 1024.0);
-    const progressPercent = 100 * scanSizeKB / totalSizeKB;
+    const progressPercent = 100 * itemData.scanSize / itemData.totalSize;
     $(".progress-bar")
        .attr("aria-valuenow", progressPercent)
        .width(`${progressPercent}%`);
