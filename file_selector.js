@@ -52,7 +52,9 @@ $(() => {
 
           FS.unlink("image.jpg");
 
-          $("#scan-carousel").triggerHandler("slid.bs.carousel");
+          $("#scan-carousel")
+            .carousel(1)
+            .carousel(0);
           $("#scan-container").show();
         });
       }
