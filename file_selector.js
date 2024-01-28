@@ -29,7 +29,7 @@ $(() => {
             );
             imageElement.setAttribute(
               "title",
-              `Scan ${i}/${files.length}: ${Math.round(buffer.length / 1024.0)}kB`
+              `Scan ${i + 1}/${files.length}: ${Math.round(buffer.length / 1024.0)}kB`
             );
             const imageContainer = document.createElement("div");
             imageContainer.setAttribute(
