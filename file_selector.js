@@ -64,9 +64,9 @@ $(() => {
     const totalSizeKB = Math.round(itemData.totalSize / 1024.0);
     $(".progress-bar").text(`${scanSizeKB} / ${totalSizeKB}kB`);
     const progressFraction = 100 * scanSizeKB / totalSizeKB;
-    $(".progress-bar").attr({
-      "aria-valuenow": progressFraction,
-      "width": `${progressFraction}%`
+    $(".progress-bar")
+      .attr("aria-valuenow", progressFraction)
+      .width(`${progressFraction}%`)
     });
   });
 });
