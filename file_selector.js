@@ -31,6 +31,10 @@ $(() => {
               "title",
               `Scan ${i + 1}/${files.length}: ${Math.round(buffer.length / 1024.0)}kB`
             );
+            imageElement.dataset.index = i + 1;
+            imageElement.dataset.scanSize = buffer.length;
+            imageElement.dataset.totalSize = view.length;
+            
             const imageContainer = document.createElement("div");
             imageContainer.setAttribute(
               "class",
@@ -53,6 +57,15 @@ $(() => {
     });
 
   $("#scan-carousel").on("slid.bs.carousel", event => {
-    $(".carousel-current-slide").text(event.to + 1);
+    const itemData = event.relatedTarget.dataset;
+    $(".carousel-current-slide").text(itemData.index);
+    const scanSizeKB = Math.round(itemData.scanSize / 1024.0);
+    const totalSizeKB = Math.round(itemData.totalSize / 1024.0);
+    $(".progress-bar").text(`${scanSizeKB} / ${totalSizeKB}kB`);
+    const progressFraction = scanSizeKB / totalSizeKB;
+    $(".progress-bar").attr({
+      "aria-valuenow": progressFraction,
+      "width": "${progressFraction * 100}%"
+    });
   });
 });
