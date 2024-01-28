@@ -62,10 +62,10 @@ $(() => {
     $(".carousel-current-slide").text(itemData.index);
     const scanSizeKB = Math.round(itemData.scanSize / 1024.0);
     const totalSizeKB = Math.round(itemData.totalSize / 1024.0);
-    $(".progress-bar").text(`${scanSizeKB} / ${totalSizeKB}kB`);
-    const progressFraction = 100 * scanSizeKB / totalSizeKB;
-    $(".progress-bar")
-      .attr("aria-valuenow", progressFraction)
-      .width(`${progressFraction}%`);
+    const progressPercent = 100 * scanSizeKB / totalSizeKB;
+    $(".progress-bar").attr("aria-valuenow", progressPercent)
+    $(".progress-bar-label")
+      .text(`${scanSizeKB} / ${totalSizeKB}kB`);
+      .width(`${progressPercent}%`);
   });
 });
