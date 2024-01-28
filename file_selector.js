@@ -66,7 +66,6 @@ $(() => {
     const progressFraction = 100 * scanSizeKB / totalSizeKB;
     $(".progress-bar")
       .attr("aria-valuenow", progressFraction)
-      .width(`${progressFraction}%`)
-    });
+      .width(`${progressFraction}%`);
   });
 });
