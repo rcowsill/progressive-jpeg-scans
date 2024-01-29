@@ -12,6 +12,23 @@ $(() => {
           );
 
           $("#scan-carousel .carousel-inner").empty();
+
+          const blankElement = document.createElement("img");
+          blankElement.setAttribute(
+            "src",
+            "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          );
+          const blankContainer = document.createElement("div");
+          blankContainer.setAttribute("class", "carousel-item");
+          blankContainer.appendChild(blankElement);
+
+          blankContainer.dataset.index = 0;
+          blankContainer.dataset.scanSize = 0;
+          blankContainer.dataset.totalSize = view.length;
+          document
+              .querySelector("#scan-carousel .carousel-inner")
+              .appendChild(blankContainer);
+
           $(".carousel-total-slides").text(files.length);
           let lastScanSize = 0;
           for (let i = 0; i < files.length; i++) {
@@ -55,7 +72,6 @@ $(() => {
           FS.unlink("image.jpg");
 
           $("#scan-carousel")
-            .carousel(1)
             .carousel(0);
           $("#scan-container").show();
         });
