@@ -13,7 +13,7 @@ $(() => {
 
           $("#scan-carousel .carousel-inner").empty();
           $(".carousel-total-slides").text(files.length);
-
+          let lastScanSize = 0;
           for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const buffer = FS.readFile(file);
@@ -42,7 +42,7 @@ $(() => {
             imageContainer.dataset.index = i + 1;
             imageContainer.dataset.scanSize = buffer.length;
             imageContainer.dataset.totalSize = view.length;
-            imageContainer.dataset.interval = 30 * buffer.length / view.length;
+            imageContainer.dataset.interval = 30 * (buffer.length - lastScanSize) / view.length;
 
             document
               .querySelector("#scan-carousel .carousel-inner")
@@ -58,6 +58,7 @@ $(() => {
             .carousel(0);
           $("#scan-container").show();
         });
+        lastScanSize = buffer.length;
       }
     });
 
