@@ -49,6 +49,7 @@ $(() => {
               .appendChild(imageContainer);
 
             FS.unlink(file);
+            lastScanSize = buffer.length;
           }
 
           FS.unlink("image.jpg");
@@ -58,7 +59,6 @@ $(() => {
             .carousel(0);
           $("#scan-container").show();
         });
-        lastScanSize = buffer.length;
       }
     });
 
