@@ -42,7 +42,7 @@ $(() => {
             imageContainer.dataset.index = i + 1;
             imageContainer.dataset.scanSize = buffer.length;
             imageContainer.dataset.totalSize = view.length;
-            imageContainer.dataset.interval = 30 * (buffer.length - lastScanSize) / view.length;
+            imageContainer.dataset.interval = Math.Round(30000 * (buffer.length - lastScanSize) / view.length);
 
             document
               .querySelector("#scan-carousel .carousel-inner")
