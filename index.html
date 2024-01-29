@@ -21,7 +21,14 @@
       .carousel-inner img {
         max-width: 100%;
       }
-      .carousel-item,
+      .carousel-item {
+         transition: none;
+         visibility: hidden;
+         display: block;
+      }
+      .carousel-item.active {
+        visibility: visible;
+      }
       .progress-bar {
         transition: none;
       }
